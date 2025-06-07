@@ -1,0 +1,33 @@
+
+#include <stdio.h>
+
+int main() {
+    int n, i, count = 1;
+    scanf("%d", &n);
+    int arr[n];
+    for(i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+    int majority = arr[0];
+    for(i = 1; i < n; i++) {
+        if(arr[i] == majority) {
+            count++;
+        } else {
+            count--;
+            if(count == 0) {
+                majority = arr[i];
+                count = 1;
+            }
+        }
+    }
+    count = 0;
+    for(i = 0; i < n; i++) {
+        if(arr[i] == majority) {
+            count++;
+        }
+    }
+    if(count > n/2) {
+        printf("The majority element is : %d", majority);
+    }
+    return 0;
+}
